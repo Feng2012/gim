@@ -1,0 +1,23 @@
+@startuml
+participant c1
+participant c2
+participant c3
+
+participant connect
+participant logic
+
+c1 -> logic: 发送消息到大群组G
+logic --> c1: 消息发送成功
+
+logic -> logic: 将消息持久化到群组G的消息列表
+logic -> logic: 查询群组所有成员（假设群组成员有c1,c2.c3）
+
+logic -> connect: 发送消息给c1的其他在线设备
+connect -> c1: 发送消息给c1的其他在线设备
+
+logic -> connect: 发送消息给c2的所有在线设备
+connect -> c2: 发送消息给c2的所有在线设备
+
+logic -> connect: 发送消息给c3的所有在线设备
+connect -> c3: 发送消息给c3的所有在线设备
+@enduml
